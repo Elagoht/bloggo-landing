@@ -1,0 +1,10 @@
+{{define "sidebar"}}
+<aside class="documents-sidebar">
+  <h2>Documents</h2>
+  <ul class="documents-list">
+    {{range .Documents}}
+    <li><a href="/documents/{{.Slug}}">{{.Title}}</a></li>
+    {{end}}
+  </ul>
+</aside>
+{{end}}

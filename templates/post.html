@@ -1,0 +1,35 @@
+{{define "post.html"}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{.Post.Title}} - Bloggo</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    {{template "header" .}}
+
+    <main>
+      <div class="content-wrapper">
+        {{template "sidebar" .}}
+
+        <div class="main-content">
+          <article class="post">
+            <h1>{{.Post.Title}}</h1>
+            <p class="post-meta">
+              By {{.Post.Author.Name}} on {{.Post.PublishedAt.Format "January 2, 2006"}}
+            </p>
+
+            <div class="post-content">{{.HTMLContent}}</div>
+          </article>
+
+          <a href="/documents" class="back-link">&larr; Back to Documents</a>
+        </div>
+      </div>
+    </main>
+
+    {{template "footer" .}}
+  </body>
+</html>
+{{end}}

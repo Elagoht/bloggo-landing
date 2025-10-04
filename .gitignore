@@ -1,0 +1,5 @@
+prerendered/
+.env
+bloggo-landing
+*.exe
+*.log

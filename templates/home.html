@@ -1,0 +1,45 @@
+{{define "home.html"}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bloggo - Headless Blog CMS</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    {{template "header" .}}
+
+    <main>
+      <section class="hero">
+        <h1>Bloggo</h1>
+        <p>A Modern Headless Blog CMS</p>
+      </section>
+
+      <section class="features">
+        <h2>Features</h2>
+        <div class="feature-grid">
+          <div class="feature">
+            <h3>Headless Architecture</h3>
+            <p>Use your preferred frontend framework and tools</p>
+          </div>
+          <div class="feature">
+            <h3>Real-time Webhooks</h3>
+            <p>Get notified when content changes</p>
+          </div>
+          <div class="feature">
+            <h3>Easy Integration</h3>
+            <p>Simple REST API for all your content needs</p>
+          </div>
+          <div class="feature">
+            <h3>Fast Performance</h3>
+            <p>Built for speed and scalability</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    {{template "footer" .}}
+  </body>
+</html>
+{{end}}
