@@ -54,7 +54,8 @@ header {
   padding: 0.5rem;
   box-shadow: 0 0 0.5rem #0008;
   justify-content: center;
-  background-color: #01010a;
+  background-color: #01010acd;
+  backdrop-filter: blur(1rem);
   color: #fefcfe;
 }
 
@@ -158,14 +159,15 @@ section {
 
 #light-layer {
   display: flex;
-  gap: 4rem;
+  gap: 2rem;
   position: absolute;
   width: 55rem;
   height: 65rem;
   top: -10rem;
   left: -10rem;
   rotate: -45deg;
-  filter: blur(2.5rem);
+  border-radius: 100%;
+  filter: blur(1rem);
   background-image: linear-gradient(#fefcdea4, #0000);
   pointer-events: none;
   @media (prefers-color-scheme: dark) {
@@ -196,9 +198,11 @@ section {
   100% {
     transform: scaleY(1);
     opacity: 0.5;
+    filter: blur(2.5rem);
   }
   50% {
     transform: scaleY(1.1);
     opacity: 1;
+    filter: blur(1.25rem);
   }
 }
