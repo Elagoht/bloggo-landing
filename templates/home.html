@@ -7,35 +7,173 @@
     <title>Bloggo - Headless Blog CMS</title>
     <link rel="stylesheet" href="/static/style.css" />
   </head>
+
   <body>
+    <div id="light-layer">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
     {{template "header" .}}
 
     <main>
-      <section class="hero">
-        <h1>Bloggo</h1>
-        <p>A Modern Headless Blog CMS</p>
+      <section id="hero">
+        <h1>Ship Your CMS with One File</h1>
+
+        <ul>
+          <li>📦 20MB Binary</li>
+          <li>🚀 ~4.9–20MB RAM</li>
+          <li>⚡ &lt;1s Start</li>
+          <li>🔒 0 Deps</li>
+          <li>🔋 Batteries Included</li>
+        </ul>
+
+        <p>
+          Headless CMS in a single 20MB binary. No DB configuration, no Node.js
+          runtime. Includes AI, analytics, workflows.
+        </p>
+
+        <nav>
+          <a
+            id="cta"
+            href="https://github.com/Elagoht/bloggo/releases/"
+            target="_blank"
+          >
+            Download Now
+          </a>
+
+          <a
+            id="secondary-cta"
+            href="https://github.com/Elagoht/bloggo/"
+            target="_blank"
+          >
+            Source Code
+          </a>
+        </nav>
+
+        <img src="/static/assets/hero.webp" width="1280" height="720" />
       </section>
 
-      <section class="features">
-        <h2>Features</h2>
-        <div class="feature-grid">
-          <div class="feature">
-            <h3>Headless Architecture</h3>
-            <p>Use your preferred frontend framework and tools</p>
-          </div>
-          <div class="feature">
-            <h3>Real-time Webhooks</h3>
-            <p>Get notified when content changes</p>
-          </div>
-          <div class="feature">
-            <h3>Easy Integration</h3>
-            <p>Simple REST API for all your content needs</p>
-          </div>
-          <div class="feature">
-            <h3>Fast Performance</h3>
-            <p>Built for speed and scalability</p>
-          </div>
-        </div>
+      <section>
+        <h2>Posting Shouldn't Be Hard.</h2>
+
+        <p>We don't include:</p>
+
+        <ul>
+          <li>⚙️ Setup Hell: DBs, servers, endless installs.</li>
+          <li>💸 Costly Overhead: DevOps teams, cloud bills.</li>
+          <li>🧩 Missing Tools: No built-in AI, logs, or workflows.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>One Binary. All Features.</h2>
+
+        <ul>
+          <li>Easy Deploy: Download, run, done.</li>
+          <li>AI Help: Auto-titles, SEO, categories.</li>
+          <li>Analytics: Views, devices, authors—built-in.</li>
+          <li>Workflows: Versions, approvals, rollbacks.</li>
+          <li>Webhooks: Integrate Slack, deploys.</li>
+          <li>Security: Audit logs, roles, JWT.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Everything You Need.</h2>
+
+        <ul>
+          <li>📝 Markdown editor, images, tags/categories</li>
+          <li>👥 Roles, permissions, profiles</li>
+          <li>🔍 Full-text search</li>
+          <li>📡 REST API docs at /api/docs</li>
+          <li>💾 SQLite + uploads folder</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>How It Works</h2>
+
+        <ul>
+          <li>Download related binary</li>
+          <li>
+            Config: Create <code>.env</code> (JWT key, Gemini API key etc.)
+          </li>
+          <li>Run: <code>./bloggo</code> → http://localhost:8723</li>
+          <li>Start: Create user, write post.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Why Bloggo?</h2>
+
+        <table>
+          <tr>
+            <th>Feature</th>
+            <th>Bloggo</th>
+            <th>Others</th>
+          </tr>
+          <tr>
+            <td>Setup</td>
+            <td>2 min</td>
+            <td>15+ min</td>
+          </tr>
+          <tr>
+            <td>Size</td>
+            <td>25MB</td>
+            <td>100MB+</td>
+          </tr>
+          <tr>
+            <td>Deps</td>
+            <td>0</td>
+            <td>Many</td>
+          </tr>
+          <tr>
+            <td>AI</td>
+            <td>Built-in</td>
+            <td>Plugin</td>
+          </tr>
+          <tr>
+            <td>Analytics</td>
+            <td>Built-in</td>
+            <td>Paid</td>
+          </tr>
+          <tr>
+            <td>License</td>
+            <td>GPL</td>
+            <td>Varies</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>Benefits</h2>
+
+        <ul>
+          <li>⚡ Fast & Cheap: Low resources, no extras.</li>
+          <li>🔒 Secure: Logs, no vulns.</li>
+          <li>📈 Scalable: SQLite for most; add replicas.</li>
+          <li>💰 Free: All features, open-source.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Get Started</h2>
+
+        <nav>
+          <a href="https://github.com/Elagoht/bloggo/releases/" target="_blank">
+            Download Now
+          </a>
+
+          <a href="https://github.com/Elagoht/bloggo/" target="_blank">
+            Source Code
+          </a>
+
+          <a href="/documents">Docs</a>
+        </nav>
+
+        <small>GPLv3. Production-ready. Join the community.</small>
       </section>
     </main>
 
