@@ -17,6 +17,7 @@ type Config struct {
 func Load() *Config {
 	return &Config{
 		BloggoAPIURL:   getEnv("BLOGGO_API_URL", "http://localhost:3000/api"),
+		BloggoAPIToken: getEnv("BLOGGO_API_TOKEN", ""),
 		WebhookSecret:  getEnv("WEBHOOK_SECRET", ""),
 		ServerPort:     getEnv("SERVER_PORT", "8080"),
 		TemplatesDir:   getEnv("TEMPLATES_DIR", "templates"),
