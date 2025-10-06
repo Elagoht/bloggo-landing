@@ -508,10 +508,6 @@ section {
         content: "3";
         filter: hue-rotate(180deg);
       }
-      &:nth-child(4)::before {
-        content: "4";
-        filter: hue-rotate(270deg);
-      }
     }
   }
   small {
