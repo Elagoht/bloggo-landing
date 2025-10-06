@@ -218,7 +218,6 @@ section {
   left: 0;
   width: 100vw;
   height: 65rem;
-  overflow-x: hidden;
   pointer-events: none;
   z-index: 10;
 }
