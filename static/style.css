@@ -269,6 +269,27 @@ section {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 900;
+
+    strong {
+      position: relative;
+
+      &::after {
+        content: "";
+        display: block;
+        background: linear-gradient(
+          to right,
+          var(--text-accent) 30%,
+          var(--text-primary) 70%
+        );
+        height: 0.33rem;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        rotate: -2deg;
+        border-radius: 10rem;
+        position: absolute;
+      }
+    }
   }
 
   ul {
@@ -533,7 +554,7 @@ section {
 }
 
 #cons-of-others {
-  margin: 10rem 0;
+  margin: 8rem 0;
 
   h2 {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
@@ -542,18 +563,16 @@ section {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 800;
-    margin-bottom: 0.5rem;
+    line-height: normal;
   }
 
   p {
     text-align: center;
     color: var(--text-secondary);
     font-size: 1.25rem;
-    margin-bottom: 2rem;
   }
 
   ul {
-    margin: 1rem 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
     gap: 3rem;
@@ -623,12 +642,11 @@ section {
 }
 
 #one-binary {
-  margin: 10rem 0;
+  margin: 8rem 0;
   h2 {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
     text-align: center;
     color: var(--text-primary);
-    margin-bottom: 2.5rem;
     font-weight: 800;
   }
 
@@ -733,7 +751,7 @@ section {
 }
 
 #how-it-works {
-  margin: 10rem 0;
+  margin: 8rem 0;
   max-width: 50rem;
   margin-left: auto;
   margin-right: auto;
@@ -745,7 +763,6 @@ section {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 800;
-    margin-bottom: 2.5rem;
   }
 
   ul {
@@ -829,7 +846,7 @@ section {
       border-radius: 0.35rem;
       font-family: "Fira Code", monospace;
       font-weight: 600;
-      color: var(--accent-blue);
+      color: gold;
     }
 
     strong {
@@ -845,7 +862,6 @@ section {
   small {
     display: block;
     text-align: center;
-    margin-top: 2.5rem;
     color: var(--text-secondary);
     font-size: 1.05rem;
   }
@@ -878,7 +894,6 @@ section {
   h2 {
     text-align: center;
     font-size: clamp(2.5rem, 5vw, 3.5rem);
-    margin-bottom: 2.5rem;
     background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -907,6 +922,11 @@ section {
         font-size: 1.1rem;
         border-top-left-radius: 1rem;
         border-top-right-radius: 1rem;
+
+        .cell.bloggo,
+        .cell.others {
+          color: #f0faff !important;
+        }
       }
 
       &:nth-child(odd):not(.header) {
@@ -992,6 +1012,11 @@ section {
       .row.header {
         background: linear-gradient(135deg, #0d47a1, #007bff);
         color: #f0faff;
+
+        .cell.bloggo,
+        .cell.others {
+          color: #f0faff !important;
+        }
       }
     }
   }
@@ -1025,9 +1050,7 @@ section {
 
         .cell.feature {
           grid-column: 1 / span 2;
-
           background-color: var(--bg-secondary);
-
           color: var(--text-primary);
           font-size: 1.15rem;
           padding: 0.75rem 1.25rem;
@@ -1064,6 +1087,7 @@ section {
           border-right: 1px solid var(--border-color);
         }
       }
+
       .row:first-of-type:not(.header) {
         margin-top: 0;
       }
@@ -1094,7 +1118,7 @@ section {
 }
 
 #get-started {
-  margin: 10rem 0;
+  margin: 8rem 0;
   text-align: center;
   padding: 1rem;
 
@@ -1138,8 +1162,6 @@ section {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
     font-weight: 800;
     color: var(--text-primary);
-    margin-bottom: 2.5rem;
-    letter-spacing: -0.05rem;
   }
 
   #feature-wheel {
@@ -1189,48 +1211,43 @@ section {
       }
 
       span {
-        /* Metin rengini li'den miras alacak */
         color: inherit;
       }
 
-      /* KART RENKLERİ VE KONTRASTLI METİN RENKLERİ (Light Mode) */
-      /* Metin rengi, gradientin en koyu tonundan bile daha koyu olmalı (genelde koyu gri/siyah) */
       &:nth-child(1) {
         background: linear-gradient(135deg, #ffcc80, #ff8a65);
-        color: #4a2710; /* Koyu Turuncu Kahve */
+        color: #4a2710;
       }
       &:nth-child(2) {
         background: linear-gradient(135deg, #81d4fa, #4fc3f7);
-        color: #0d2d40; /* Çok Koyu Mavi */
+        color: #0d2d40;
       }
       &:nth-child(3) {
         background: linear-gradient(135deg, #a5d6a7, #66bb6a);
-        color: #1a361b; /* Çok Koyu Yeşil */
+        color: #1a361b;
       }
       &:nth-child(4) {
         background: linear-gradient(135deg, #ffab91, #ff8a65);
-        color: #5c271c; /* Koyu Kahverengi Kırmızı */
+        color: #5c271c;
       }
       &:nth-child(5) {
         background: linear-gradient(135deg, #b39ddb, #9575cd);
-        color: #311a5c; /* Koyu Mor */
+        color: #311a5c;
       }
       &:nth-child(6) {
         background: linear-gradient(135deg, #fff59d, #ffeb3b);
-        color: #4c4600; /* Koyu Hardal (Okunabilirliği zor olduğu için koyu) */
+        color: #4c4600;
       }
       &:nth-child(7) {
         background: linear-gradient(135deg, #f48fb1, #e91e63);
-        color: #5c0c2f; /* Koyu Pembe */
+        color: #5c0c2f;
       }
       &:nth-child(8) {
         background: linear-gradient(135deg, #80cbc4, #26a69a);
-        color: #00332d; /* Koyu Turkuaz */
+        color: #00332d;
       }
 
-      /* Dark Mode Renkleri ve Yüksek Kontrastlı Metin Renkleri */
       @media (prefers-color-scheme: dark) {
-        /* Koyu arka planlar için Beyaz/Açık Metin kullanılır. */
         color: #fff;
 
         &:nth-child(1) {
@@ -1249,7 +1266,6 @@ section {
           background: linear-gradient(135deg, #4a148c, #673ab7);
         }
         &:nth-child(6) {
-          /* Sarı (açık renk) Dark Mode'da bile KOYU metin ister */
           background: linear-gradient(135deg, #fbc02d, #ffeb3b);
           color: #333;
         }
@@ -1263,14 +1279,12 @@ section {
     }
   }
 
-  /* Mobil Sıralama ve Resim Boyutları */
   & > img {
     width: 100%;
     max-width: 10rem;
     height: auto;
     object-fit: cover;
     margin-top: 0;
-    margin-bottom: 2.5rem;
     display: block;
     border-radius: 0.75rem;
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
@@ -1285,7 +1299,6 @@ section {
     margin-top: 0;
   }
 
-  /* BÜYÜK EKRAN DÜZENİ */
   @media (min-width: 1280px) {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -1295,7 +1308,6 @@ section {
     h2 {
       grid-column: 1 / span 2;
       text-align: center;
-      margin-bottom: 3rem;
       order: unset;
     }
 
