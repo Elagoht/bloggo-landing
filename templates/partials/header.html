@@ -13,4 +13,18 @@
     </ul>
   </nav>
 </header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const header = document.querySelector("header");
+    const scrollThreshold = 100;
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+      if (currentScroll > scrollThreshold) header.classList.add("scrolled");
+      else header.classList.remove("scrolled");
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+  });
+</script>
 {{end}}
