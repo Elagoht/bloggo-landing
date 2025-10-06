@@ -669,49 +669,99 @@ section {
   h2 {
     text-align: center;
     font-size: 3rem;
+    background: linear-gradient(90deg, #00d9f6, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   ul {
-    padding: 2rem;
+    padding: 1rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1rem;
 
     li {
-      width: 100%;
+      position: relative;
       display: flex;
-      align-items: center;
-      justify-content: start;
-      gap: 2rem;
+      gap: 1.5rem;
       font-size: 1.25rem;
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+
+      &:hover {
+        transform: translateY(-0.3rem) scale(1.03);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        background: linear-gradient(135deg, #bfdbfe, #93c5fd);
+      }
 
       &::before {
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: var(--accent-primary);
-        color: var(--text-primary);
+        background: linear-gradient(135deg, #60a5fa, #3b82f6);
+        color: #f0faff;
         font-weight: 600;
         width: 4rem;
         height: 4rem;
         aspect-ratio: 1;
-        font-size: 3rem;
+        font-size: 2rem;
+        border-radius: 0.75rem;
+        flex-shrink: 0;
+        transition: transform 0.3s, background 0.3s;
       }
+
       &:nth-child(1)::before {
         content: "1";
       }
       &:nth-child(2)::before {
         content: "2";
-        filter: hue-rotate(90deg);
       }
       &:nth-child(3)::before {
         content: "3";
-        filter: hue-rotate(180deg);
+      }
+
+      &:hover::before {
+        transform: rotate(-10deg) scale(1.1);
+        background: linear-gradient(135deg, #3b82f6, #60a5fa);
+      }
+
+      code {
+        background: rgba(0, 0, 0, 0.05);
+        padding: 0.15rem 0.5rem;
+        border-radius: 0.25rem;
+        font-family: monospace;
       }
     }
   }
+
   small {
+    display: block;
     text-align: center;
+    margin-top: 2rem;
+    color: var(--text-secondary);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    ul li {
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: #f0faff;
+      &:hover {
+        background: linear-gradient(135deg, #2563eb, #1e40af);
+      }
+      &::before {
+        background: linear-gradient(135deg, #3b82f6, #1e40af);
+        color: #f0faff;
+      }
+      &:hover::before {
+        background: linear-gradient(135deg, #1e40af, #3b82f6);
+      }
+    }
+    small {
+      color: #cbd5e1;
+    }
   }
 }
 
