@@ -468,7 +468,6 @@ section {
 
   overflow-x: hidden;
   pointer-events: none;
-  z-index: 10;
 }
 
 #light-layer {
@@ -910,7 +909,6 @@ section {
         border-top-right-radius: 1rem;
       }
 
-      /* Masaüstü: Even/Odd Renkler Kalsın */
       &:nth-child(odd):not(.header) {
         background-color: var(--bg-card);
       }
@@ -998,7 +996,6 @@ section {
     }
   }
 
-  /* Mobil Görünüm: Yığılmış Card View (max-width: 768px) */
   @media (max-width: 768px) {
     .compare-table {
       box-shadow: none;
@@ -1019,7 +1016,6 @@ section {
         border-radius: 0.5rem;
         overflow: hidden;
 
-        /* Mobil: Even/Odd renkleri kaldır, tüm satır aynı kart rengi olsun */
         background-color: var(--bg-card);
 
         &:nth-child(odd):not(.header),
@@ -1030,7 +1026,6 @@ section {
         .cell.feature {
           grid-column: 1 / span 2;
 
-          /* Mobil: Feature başlığı için farklı renk */
           background-color: var(--bg-secondary);
 
           color: var(--text-primary);
@@ -1127,5 +1122,195 @@ section {
     align-items: center;
     justify-content: center;
     gap: 1rem;
+  }
+}
+
+#base-features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 10rem auto;
+  padding: 1rem;
+  max-width: var(--max-width);
+
+  h2 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.05rem;
+  }
+
+  #feature-wheel {
+    list-style: none;
+    padding: 0;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: 1rem;
+    width: 100%;
+
+    li {
+      position: relative;
+      width: 100%;
+      height: 7rem;
+      padding: 1rem;
+      border-radius: 0.75rem;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      gap: 0.25rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      white-space: normal;
+      line-height: 1.3;
+
+      border: 1px solid transparent;
+      box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease-out, box-shadow 0.3s ease-out,
+        filter 0.3s ease;
+
+      &:hover {
+        transform: translateY(-0.25rem) rotate(0.5deg);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+        filter: brightness(1.1);
+      }
+
+      figure {
+        font-size: 2rem;
+        line-height: 1;
+        margin-bottom: 0.25rem;
+      }
+
+      span {
+        /* Metin rengini li'den miras alacak */
+        color: inherit;
+      }
+
+      /* KART RENKLERİ VE KONTRASTLI METİN RENKLERİ (Light Mode) */
+      /* Metin rengi, gradientin en koyu tonundan bile daha koyu olmalı (genelde koyu gri/siyah) */
+      &:nth-child(1) {
+        background: linear-gradient(135deg, #ffcc80, #ff8a65);
+        color: #4a2710; /* Koyu Turuncu Kahve */
+      }
+      &:nth-child(2) {
+        background: linear-gradient(135deg, #81d4fa, #4fc3f7);
+        color: #0d2d40; /* Çok Koyu Mavi */
+      }
+      &:nth-child(3) {
+        background: linear-gradient(135deg, #a5d6a7, #66bb6a);
+        color: #1a361b; /* Çok Koyu Yeşil */
+      }
+      &:nth-child(4) {
+        background: linear-gradient(135deg, #ffab91, #ff8a65);
+        color: #5c271c; /* Koyu Kahverengi Kırmızı */
+      }
+      &:nth-child(5) {
+        background: linear-gradient(135deg, #b39ddb, #9575cd);
+        color: #311a5c; /* Koyu Mor */
+      }
+      &:nth-child(6) {
+        background: linear-gradient(135deg, #fff59d, #ffeb3b);
+        color: #4c4600; /* Koyu Hardal (Okunabilirliği zor olduğu için koyu) */
+      }
+      &:nth-child(7) {
+        background: linear-gradient(135deg, #f48fb1, #e91e63);
+        color: #5c0c2f; /* Koyu Pembe */
+      }
+      &:nth-child(8) {
+        background: linear-gradient(135deg, #80cbc4, #26a69a);
+        color: #00332d; /* Koyu Turkuaz */
+      }
+
+      /* Dark Mode Renkleri ve Yüksek Kontrastlı Metin Renkleri */
+      @media (prefers-color-scheme: dark) {
+        /* Koyu arka planlar için Beyaz/Açık Metin kullanılır. */
+        color: #fff;
+
+        &:nth-child(1) {
+          background: linear-gradient(135deg, #e65100, #ff6f00);
+        }
+        &:nth-child(2) {
+          background: linear-gradient(135deg, #0d47a1, #1e88e5);
+        }
+        &:nth-child(3) {
+          background: linear-gradient(135deg, #1b5e20, #388e3c);
+        }
+        &:nth-child(4) {
+          background: linear-gradient(135deg, #bf360c, #ff5722);
+        }
+        &:nth-child(5) {
+          background: linear-gradient(135deg, #4a148c, #673ab7);
+        }
+        &:nth-child(6) {
+          /* Sarı (açık renk) Dark Mode'da bile KOYU metin ister */
+          background: linear-gradient(135deg, #fbc02d, #ffeb3b);
+          color: #333;
+        }
+        &:nth-child(7) {
+          background: linear-gradient(135deg, #880e4f, #d81b60);
+        }
+        &:nth-child(8) {
+          background: linear-gradient(135deg, #004d40, #00897b);
+        }
+      }
+    }
+  }
+
+  /* Mobil Sıralama ve Resim Boyutları */
+  & > img {
+    width: 100%;
+    max-width: 10rem;
+    height: auto;
+    object-fit: cover;
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+    display: block;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    order: 2;
+  }
+
+  & > h2 {
+    order: 1;
+  }
+  & > #feature-wheel {
+    order: 3;
+    margin-top: 0;
+  }
+
+  /* BÜYÜK EKRAN DÜZENİ */
+  @media (min-width: 1280px) {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+    gap: 3rem;
+
+    h2 {
+      grid-column: 1 / span 2;
+      text-align: center;
+      margin-bottom: 3rem;
+      order: unset;
+    }
+
+    #feature-wheel {
+      grid-column: 1 / span 1;
+      order: unset;
+    }
+
+    & > img {
+      grid-column: 2 / span 1;
+      justify-self: center;
+      align-self: center;
+      margin: 0;
+      max-width: 12rem;
+      order: unset;
+    }
   }
 }

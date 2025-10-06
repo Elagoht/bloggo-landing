@@ -76,7 +76,22 @@
           </a>
         </nav>
 
-        <img src="/static/assets/hero.webp" width="1280" height="720" />
+        <picture>
+          <source
+            srcset="/static/assets/hero-dark.webp"
+            media="(prefers-color-scheme: dark)"
+          />
+          <source
+            srcset="/static/assets/hero.webp"
+            media="(prefers-color-scheme: light)"
+          />
+          <img
+            src="/static/assets/hero.webp"
+            width="1280"
+            height="720"
+            alt="Hero"
+          />
+        </picture>
       </section>
 
       <section id="cons-of-others">
@@ -159,12 +174,10 @@
         </ul>
       </section>
 
-      <!-- <section id="base-features">
+      <section id="base-features">
         <h2>Everything You Need.</h2>
 
         <ul id="feature-wheel">
-          <img src="/static/assets/gopher-reads.png" width="128" height="128" />
-
           <li>
             <figure>📝</figure>
             <span> Markdown Editor</span>
@@ -206,42 +219,8 @@
           </li>
         </ul>
 
-        <script>
-          const items = [...document.querySelectorAll("#feature-wheel > li")];
-          let angleOffset = 0;
-
-          items.forEach((item, index) => {
-            item.style.backgroundColor = `hsl(${
-              (360 / items.length) * index
-            }, 10%, 50%)`;
-            item.style.color = `hsl(${(360 / items.length) * index}, 50%, 80%)`;
-          });
-
-          function animate() {
-            angleOffset += 0.0025;
-
-            const minRadius = 5;
-            const maxRadius = 15;
-
-            const screenFactor =
-              Math.min(window.innerWidth, window.innerHeight) / 768;
-            let radius = minRadius + (maxRadius - minRadius) * screenFactor;
-
-            radius = Math.min(radius, maxRadius);
-
-            items.forEach((item, index) => {
-              const angle = (index / items.length) * 2 * Math.PI + angleOffset;
-              const x = Math.cos(angle) * radius;
-              const y = Math.sin(angle) * radius;
-              item.style.translate = `${x}rem ${y}rem`;
-            });
-
-            requestAnimationFrame(animate);
-          }
-
-          animate();
-        </script>
-      </section> -->
+        <img src="/static/assets/gopher-reads.png" width="96" height="96" />
+      </section>
 
       <section id="how-it-works">
         <h2>How It Works</h2>
