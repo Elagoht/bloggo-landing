@@ -232,7 +232,7 @@ section {
   }
 
   img:hover {
-    transform: translateY(-8px) scale(1.01);
+    transform: translateY(-0.5rem) scale(1.01);
     box-shadow: 0 0 1rem rgba(0, 173, 216, 0.5);
   }
 }
@@ -349,6 +349,7 @@ section {
   left: 0;
   width: 100vw;
   height: 65rem;
+  overflow: hidden;
   pointer-events: none;
   z-index: 10;
 }
@@ -356,14 +357,11 @@ section {
 #light-layer {
   display: flex;
   gap: 2rem;
-
   position: absolute;
   top: -10rem;
   left: -10rem;
-
   width: 55rem;
   height: 65rem;
-
   rotate: -45deg;
   border-radius: 100%;
   filter: blur(1rem);
@@ -424,6 +422,10 @@ section {
   h2 {
     font-size: 3rem;
     text-align: center;
+    background: linear-gradient(90deg, #00d9f6, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 5s ease infinite;
   }
 
   p {
@@ -433,39 +435,43 @@ section {
   }
 
   ul {
+    margin: 1rem 0;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
-    padding: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 2rem;
+    padding: 0;
     list-style: none;
 
-    @media (max-width: 48rem) {
-      grid-template-columns: 1fr;
-    }
-
     li {
-      border: var(--border-color) solid 0.0625rem;
-      padding: 1rem;
-      border-radius: 1rem;
-      flex: 1;
-      text-align: center;
+      position: relative;
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      background-color: #000a;
+      padding: 2rem 1rem;
+      border-radius: 1rem;
+      text-align: center;
       color: #f0faff;
+      transition: all 0.3s;
+      background-color: #0006;
+      background-size: cover;
       background-blend-mode: multiply;
-      background-position: center;
 
+      &:hover {
+        transform: translateY(-0.5rem) scale(1.025);
+        box-shadow: 0 0 1rem rgba(0, 173, 216, 0.5);
+      }
       figure {
         font-size: 6rem;
+        transition: transform 0.3s;
       }
-
       strong {
         font-size: 1.5rem;
-        color: #a1c4d8;
+        color: #00d9f6;
       }
-
+      span {
+        font-size: 1rem;
+        color: #d1e8ff;
+      }
       &:first-child {
         background-image: url("/static/assets/db-hell.webp");
       }
@@ -477,72 +483,136 @@ section {
       }
     }
   }
+
+  @keyframes gradientMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 }
 
 #one-binary {
   h2 {
     font-size: 3rem;
     text-align: center;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
   }
 
   ul {
-    padding: 1rem;
+    padding: 2rem 1rem;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 1.5rem;
 
     li {
-      border: 0.0625rem solid var(--border-color);
-      background-color: var(--accent-primary);
-      padding: 0 0.75rem;
       border-radius: 1rem;
+      padding: 1.5rem;
       display: flex;
-      gap: 1rem;
       align-items: center;
-      align-self: center;
+      gap: 1rem;
+      color: var(--text-primary);
+      box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+
       figure {
         font-size: 4rem;
-      }
-
-      &:nth-child(2) {
-        filter: hue-rotate(51.42deg);
-        figure {
-          filter: hue-rotate(-51.42deg);
-        }
-      }
-      &:nth-child(3) {
-        filter: hue-rotate(102.85deg);
-        figure {
-          filter: hue-rotate(-102.85deg);
-        }
-      }
-      &:nth-child(4) {
-        filter: hue-rotate(154.28deg);
-        figure {
-          filter: hue-rotate(-154.28deg);
-        }
-      }
-      &:nth-child(5) {
-        filter: hue-rotate(205.71deg);
-        figure {
-          filter: hue-rotate(-205.71deg);
-        }
-      }
-      &:nth-child(6) {
-        filter: hue-rotate(257.14deg);
-        figure {
-          filter: hue-rotate(-257.14deg);
-        }
+        transition: transform 0.3s;
       }
 
       div {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.25rem;
 
         strong {
           font-size: 1.5rem;
+        }
+
+        span {
+          font-size: 1rem;
+        }
+      }
+
+      &:hover {
+        transform: translateY(-0.3rem) scale(1.03);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+      }
+
+      /* Başlangıç ikon açısı */
+      &:nth-child(1) figure {
+        transform: rotate(-10deg);
+      }
+      &:nth-child(2) figure {
+        transform: rotate(5deg);
+      }
+      &:nth-child(3) figure {
+        transform: rotate(-7deg);
+      }
+      &:nth-child(4) figure {
+        transform: rotate(8deg);
+      }
+      &:nth-child(5) figure {
+        transform: rotate(-5deg);
+      }
+      &:nth-child(6) figure {
+        transform: rotate(6deg);
+      }
+
+      /* Hover’da ikon ortalanıyor ve hafif büyüyor */
+      &:hover figure {
+        transform: rotate(0deg) scale(1.1);
+      }
+
+      /* Light mode gradients */
+      @media (prefers-color-scheme: light) {
+        &:nth-child(1) {
+          background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+        }
+        &:nth-child(2) {
+          background: linear-gradient(135deg, #cffafe, #bae6fd);
+        }
+        &:nth-child(3) {
+          background: linear-gradient(135deg, #fef3c7, #fde68a);
+        }
+        &:nth-child(4) {
+          background: linear-gradient(135deg, #fee2e2, #fecaca);
+        }
+        &:nth-child(5) {
+          background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+        }
+        &:nth-child(6) {
+          background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+        }
+      }
+
+      /* Dark mode gradients */
+      @media (prefers-color-scheme: dark) {
+        color: #f0faff;
+        &:nth-child(1) {
+          background: linear-gradient(135deg, #1e3a8a, #2563eb);
+        }
+        &:nth-child(2) {
+          background: linear-gradient(135deg, #065f46, #10b981);
+        }
+        &:nth-child(3) {
+          background: linear-gradient(135deg, #7c2d12, #f97316);
+        }
+        &:nth-child(4) {
+          background: linear-gradient(135deg, #881337, #e11d48);
+        }
+        &:nth-child(5) {
+          background: linear-gradient(135deg, #42261a, #7c3aed);
+        }
+        &:nth-child(6) {
+          background: linear-gradient(135deg, #1e40af, #3b82f6);
         }
       }
     }
@@ -749,7 +819,6 @@ footer {
 
   p {
     color: var(--text-secondary);
-    margin: 0;
   }
 
   nav {
