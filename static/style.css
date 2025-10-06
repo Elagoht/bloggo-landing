@@ -3,39 +3,41 @@
 :root {
   --max-width: 80rem;
 
-  --bg-primary: #f6f6f6;
-  --bg-secondary: #e7e7e7;
+  /* Light Theme */
+  --bg-primary: #f4f6f8;
+  --bg-secondary: #e8ebef;
   --bg-card: #ffffff;
 
-  --text-primary: #2b3040;
-  --text-secondary: #6d6d6d;
-  --text-accent: #007d9c;
-  --text-negative: #d12323;
-  --border-color: #d4dde9;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --text-accent: #3b82f6;
+  --text-negative: #ef4444;
+  --border-color: #d1d5db;
 
-  --accent-primary: #00add8;
-  --accent-hover: #0095c5;
+  --accent-primary: #3b82f6;
+  --accent-hover: #2563eb;
 
-  --header-bg: rgba(246, 246, 246, 0.9);
-  --shadow: rgba(0, 0, 0, 0.1);
-  --light-glow: linear-gradient(#00add814, #00add800);
-  --dark-glow: linear-gradient(#00add834, #00add800);
+  --header-bg: rgba(244, 246, 248, 0.9);
+  --shadow: rgba(0, 0, 0, 0.08);
+  --light-glow: linear-gradient(45deg, #3b82f620, #60a5fa00);
+  --dark-glow: linear-gradient(45deg, #2563eb40, #3b82f600);
 
+  /* Dark Theme */
   @media (prefers-color-scheme: dark) {
-    --bg-primary: #1b1b1b;
-    --bg-secondary: #3d3d3d;
-    --bg-card: rgba(27, 27, 27, 0.9);
+    --bg-primary: #121212;
+    --bg-secondary: #1f1f1f;
+    --bg-card: #1e1e1e;
 
-    --text-primary: #f4f7fa;
-    --text-secondary: #888888;
-    --text-accent: #00c8f8;
-    --text-negative: #f78686;
-    --border-color: #4f4f4f;
+    --text-primary: #e5e7eb;
+    --text-secondary: #9ca3af;
+    --text-accent: #60a5fa;
+    --text-negative: #f87171;
+    --border-color: #374151;
 
-    --accent-primary: #00add8;
-    --accent-hover: #00d0f8;
+    --accent-primary: #60a5fa;
+    --accent-hover: #3b82f6;
 
-    --header-bg: rgba(27, 27, 27, 0.95);
+    --header-bg: rgba(18, 18, 18, 0.95);
     --shadow: rgba(0, 0, 0, 0.5);
   }
 }
@@ -218,7 +220,7 @@ section {
   padding: 1rem;
   padding-top: 4rem;
   @media (min-width: 40rem) {
-    padding-top: calc(50dvh - 12rem);
+    padding-top: calc(33dvh - 12rem);
   }
 
   h1 {
@@ -426,8 +428,9 @@ section {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 65rem;
-  overflow: hidden;
+  height: 100rem;
+  overflow-x: hidden;
+  overflow-x: visible;
   pointer-events: none;
   z-index: 10;
 }
