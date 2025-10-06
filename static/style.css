@@ -33,7 +33,7 @@
     --border-color: #4f4f4f;
 
     --accent-primary: #00add8;
-    --accent-hover: #00c0e8;
+    --accent-hover: #00d0f8;
 
     --header-bg: rgba(27, 27, 27, 0.95);
     --shadow: rgba(0, 0, 0, 0.5);
@@ -139,11 +139,10 @@ section {
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: 1.5rem;
   padding: 1rem;
   padding-top: 4rem;
   @media (min-width: 40rem) {
-    padding-top: calc(50dvh - 9rem);
+    padding-top: calc(50dvh - 12rem);
   }
 
   h1 {
@@ -158,11 +157,20 @@ section {
     justify-content: center;
     gap: 1rem;
     color: var(--text-secondary);
+
+    li {
+      display: block;
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      padding: 0.5rem 0.75rem;
+      border-radius: 10rem;
+    }
   }
 
   p {
     text-align: center;
     line-height: 1.5;
+    font-size: 1.25rem;
   }
 
   nav {
@@ -172,10 +180,15 @@ section {
     gap: 1rem;
     margin: 2rem 0;
   }
+
+  img {
+    border-radius: 1rem;
+    box-shadow: 0 0.1rem 0.25rem var(--shadow);
+  }
 }
 
-#cta,
-#secondary-cta {
+.cta,
+.secondary-cta {
   padding: 0.75rem 1rem;
   text-decoration: none;
   border: 0.125rem solid currentColor;
@@ -184,15 +197,15 @@ section {
   transition: all 0.3s;
 }
 
-#cta {
+.cta {
   background-color: var(--accent-primary);
+  border-color: var(--accent-primary);
   color: var(--bg-primary);
-}
 
-#cta:hover {
-  color: var(--bg-primary);
-  border-color: var(--accent-hover);
-  background-color: var(--accent-hover);
+  &:hover {
+    color: var(--bg-primary);
+    background-color: var(--accent-hover);
+  }
 }
 
 #secondary-cta:hover {
@@ -351,7 +364,7 @@ section {
 
     li {
       border: 0.0625rem solid var(--border-color);
-      background-color: var(--bg-secondary);
+      background-color: var(--accent-primary);
       padding: 0 0.75rem;
       border-radius: 1rem;
       display: flex;
@@ -476,8 +489,8 @@ section {
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: var(--bg-secondary);
-        color: var(--text-secondary);
+        background-color: var(--accent-primary);
+        color: var(--text-primary);
         font-weight: 600;
         width: 4rem;
         height: 4rem;
@@ -519,7 +532,7 @@ section {
     background: var(--bg-card);
     border-radius: 1rem;
     overflow: hidden;
-    box-shadow: 0 0.0625rem 0.1875 var(--shadow);
+    box-shadow: 0 0.0625rem 0.1875rem var(--shadow);
 
     tr {
       border-bottom: 0.0625rem solid var(--border-color);
@@ -574,12 +587,10 @@ section {
 
 #get-started {
   margin: 8rem 0;
-  padding: 4rem 2rem;
   text-align: center;
 
   h2 {
     font-size: 3rem;
-    margin-bottom: 2rem;
   }
 
   nav {
@@ -587,23 +598,6 @@ section {
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
-    margin: 2rem 0;
-
-    a {
-      padding: 0.75rem 1.5rem;
-      text-decoration: none;
-      border: 0.125rem solid var(--border-color);
-      color: var(--text-primary);
-      border-radius: 10rem;
-      transition: all 0.3s;
-      font-weight: 600;
-
-      &:hover {
-        background-color: var(--accent-primary);
-        color: var(--bg-primary);
-        border-color: var(--accent-primary);
-      }
-    }
   }
 
   small {
@@ -620,14 +614,9 @@ footer {
   background: var(--bg-secondary);
   border-top: 0.0625rem solid var(--border-color);
   text-align: center;
-
-  .container {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
   p {
     color: var(--text-secondary);
