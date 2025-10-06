@@ -6,7 +6,7 @@
 
 html {
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 1rem;
   font-family: "Outfit", sans-serif;
   font-optical-sizing: auto;
 }
@@ -290,16 +290,10 @@ section {
 
   ul {
     padding: 1rem;
-    background-image: linear-gradient(
-      to right,
-      transparent calc(50% - 0.25rem),
-      #272734 calc(50% - 0.25rem),
-      #272734 calc(50% + 0.25rem),
-      transparent calc(50% + 0.25rem)
-    );
     list-style: none;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+
     gap: 1rem;
 
     li {
@@ -310,26 +304,40 @@ section {
       display: flex;
       gap: 1rem;
       align-items: center;
-      width: fit-content;
       align-self: center;
-
-      @media (min-width: 40rem) {
-        &:nth-child(odd) {
-          border-left: 0.125rem solid #373746;
-          margin-left: calc(50% - 2rem);
-          align-self: flex-start;
-        }
-        &:nth-child(even) {
-          border-right: 0.125rem solid #373746;
-          margin-right: calc(50% - 2rem);
-          flex-direction: row-reverse;
-          text-align: right;
-          align-self: flex-end;
-        }
-      }
-
       figure {
         font-size: 4rem;
+      }
+
+      &:nth-child(2) {
+        filter: hue-rotate(51.42deg);
+        figure {
+          filter: hue-rotate(-51.42deg);
+        }
+      }
+      &:nth-child(3) {
+        filter: hue-rotate(102.85deg);
+        figure {
+          filter: hue-rotate(-102.85deg);
+        }
+      }
+      &:nth-child(4) {
+        filter: hue-rotate(154.28deg);
+        figure {
+          filter: hue-rotate(-154.28deg);
+        }
+      }
+      &:nth-child(5) {
+        filter: hue-rotate(205.71deg);
+        figure {
+          filter: hue-rotate(-205.71deg);
+        }
+      }
+      &:nth-child(6) {
+        filter: hue-rotate(257.14deg);
+        figure {
+          filter: hue-rotate(-257.14deg);
+        }
       }
 
       div {
@@ -384,6 +392,125 @@ section {
 
       @media (max-width: 40rem) {
         scale: 75%;
+      }
+    }
+  }
+}
+
+#how-it-works {
+  margin: 8rem 0;
+
+  h2 {
+    text-align: center;
+    font-size: 3rem;
+  }
+
+  ul {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+    gap: 2rem;
+
+    li {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      gap: 2rem;
+      font-size: 1.25rem;
+
+      &::before {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #373746;
+        color: #676784;
+        font-weight: 600;
+        width: 4rem;
+        height: 4rem;
+        aspect-ratio: 1;
+        font-size: 3rem;
+      }
+      &:nth-child(1)::before {
+        content: "1";
+      }
+      &:nth-child(2)::before {
+        content: "2";
+        filter: hue-rotate(90deg);
+      }
+      &:nth-child(3)::before {
+        content: "3";
+        filter: hue-rotate(180deg);
+      }
+      &:nth-child(4)::before {
+        content: "4";
+        filter: hue-rotate(270deg);
+      }
+    }
+  }
+}
+
+#why-bloggo {
+  margin: 8rem 0;
+
+  h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto;
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+
+    tr {
+      border-bottom: 0.0625rem solid #eee;
+      font-size: 1.25em;
+
+      &:last-child {
+        border-bottom: none;
+      }
+      &:nth-child(even) {
+        background: #f9f9f9;
+      }
+      &:hover {
+        background: #e3f2fd;
+        transition: all 0.3s ease;
+      }
+      td {
+        padding: 1rem;
+        text-align: left;
+        border-right: 0.0625rem solid #eee;
+
+        figure {
+          display: inline;
+          padding-right: 1rem;
+        }
+        &:first-child {
+          font-weight: 700;
+          color: #1f2937;
+        }
+        &:nth-child(2) {
+          color: #059669;
+          font-weight: 600;
+          letter-spacing: 0.3px;
+        }
+        &:nth-child(3) {
+          color: #ac2626;
+          font-weight: 600;
+          letter-spacing: 0.3px;
+          border-right: none;
+        }
+      }
+      th {
+        padding: 1rem;
+        background: #4f46e5;
+        color: white;
+        font-weight: 700;
       }
     }
   }
