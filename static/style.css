@@ -3,7 +3,6 @@
 :root {
   --max-width: 80rem;
 
-  /* LIGHT THEME (Varsayılan) */
   --bg-primary: #f6f6f6;
   --bg-secondary: #e7e7e7;
   --bg-card: #ffffff;
@@ -17,13 +16,12 @@
   --accent-primary: #00add8;
   --accent-hover: #0095c5;
 
-  --header-bg: rgba(246, 246, 246, 0.9); /* Smoke 50'nin saydamı */
+  --header-bg: rgba(246, 246, 246, 0.9);
   --shadow: rgba(0, 0, 0, 0.1);
   --light-glow: linear-gradient(#fefcde14, transparent);
   --dark-glow: linear-gradient(#fefcde34, transparent);
 
   @media (prefers-color-scheme: dark) {
-    /* DARK THEME */
     --bg-primary: #1b1b1b;
     --bg-secondary: #3d3d3d;
     --bg-card: rgba(27, 27, 27, 0.9);
@@ -37,7 +35,7 @@
     --accent-primary: #00add8;
     --accent-hover: #00c0e8;
 
-    --header-bg: rgba(27, 27, 27, 0.95); /* Smoke 950'nin saydamı */
+    --header-bg: rgba(27, 27, 27, 0.95);
     --shadow: rgba(0, 0, 0, 0.5);
   }
 }
