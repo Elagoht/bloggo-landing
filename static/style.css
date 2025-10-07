@@ -651,8 +651,11 @@ section {
   h2 {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
     text-align: center;
-    color: var(--text-primary);
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-weight: 800;
+    line-height: normal;
   }
 
   ul {
@@ -1104,10 +1107,12 @@ section {
 
   h2 {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
-    font-weight: 800;
+    text-align: center;
     background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    line-height: normal;
   }
 
   p {
@@ -1163,8 +1168,12 @@ section {
 
   h2 {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
+    text-align: center;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-weight: 800;
-    color: var(--text-primary);
+    line-height: normal;
   }
 
   #feature-wheel {
