@@ -3,7 +3,11 @@
   <h2>Documents</h2>
   <ul class="documents-list">
     {{range .Documents}}
-    <li><a href="/documents/{{.Slug}}">{{.Title}}</a></li>
+    <li>
+      <a href="/documents/{{.Slug}}" {{if or (and $.Post (eq $.Post.Slug .Slug)) (and $.CurrentSlug (eq $.CurrentSlug .Slug))}}class="active"{{end}}>
+        {{.Title}}
+      </a>
+    </li>
     {{end}}
   </ul>
 </aside>

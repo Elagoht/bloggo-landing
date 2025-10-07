@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"slices"
 	"time"
 )
 
@@ -230,6 +231,8 @@ func (f *Fetcher) GetDocuments() ([]Post, error) {
 	if err := json.Unmarshal(body, &response); err != nil {
 		return nil, fmt.Errorf("failed to unmarshal documents: %w", err)
 	}
+
+	slices.Reverse(response.Data)
 
 	return response.Data, nil
 }

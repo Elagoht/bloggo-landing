@@ -1,43 +1,45 @@
 {{define "documents.html"}}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Documents - Bloggo</title>
-    <link rel="stylesheet" href="/static/style.css" />
-  </head>
-  <body>
-    {{template "header" .}}
 
-    <main>
-      <div class="content-wrapper">
-        {{template "sidebar" .}}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documents - Bloggo</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
 
-        <div class="main-content">
-          <div class="page-header">
-            <h1>Documentation</h1>
-            <p class="page-description">Explore our comprehensive guides and documentation</p>
-          </div>
+<body>
+  {{template "header" .}}
 
-          <div class="posts-list">
-            {{range .Documents}}
-            <article class="post-preview">
-              <h2><a href="/documents/{{.Slug}}">{{.Title}}</a></h2>
-              <p class="post-meta">
-                By {{.Author.Name}} · {{.PublishedAt.Format "January 2, 2006"}}
-              </p>
-              {{if .Excerpt}}
-              <p class="excerpt">{{.Excerpt}}</p>
+  <main>
+    <div class="content-wrapper">
+      {{template "sidebar" .}}
+
+      <div class="main-content">
+        <h1>Documentation</h1>
+
+        <section id="docs-welcome" class="docs-welcome">
+          <div class="docs-hero">
+            <h2>Welcome to Docs</h2>
+            <p>
+              Everything you need to get started with Bloggo: quick start, concepts, and step-by-step tutorials.
+            </p>
+            <nav class="docs-actions">
+              {{if gt (len .Documents) 0}}
+              {{with index .Documents 0}}
+              <a class="cta" href="/documents/{{.Slug}}">Start now</a>
               {{end}}
-            </article>
-            {{end}}
+              {{end}}
+            </nav>
           </div>
-        </div>
+        </section>
       </div>
-    </main>
+    </div>
+  </main>
 
-    {{template "footer" .}}
-  </body>
+  {{template "footer" .}}
+</body>
+
 </html>
 {{end}}
