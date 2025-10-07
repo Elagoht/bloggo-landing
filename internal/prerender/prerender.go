@@ -8,15 +8,16 @@ import (
 	"path/filepath"
 
 	"bloggo-landing/internal/fetcher"
+
 	"github.com/gomarkdown/markdown"
 	"github.com/gomarkdown/markdown/html"
 	"github.com/gomarkdown/markdown/parser"
 )
 
 type Renderer struct {
-	fetcher       *fetcher.Fetcher
-	templates     *template.Template
-	outputDir     string
+	fetcher   *fetcher.Fetcher
+	templates *template.Template
+	outputDir string
 }
 
 func New(f *fetcher.Fetcher, templatesDir, outputDir string) (*Renderer, error) {
@@ -86,7 +87,7 @@ func (r *Renderer) RenderBlogIndex() error {
 		return err
 	}
 
-	data := map[string]interface{}{
+	data := map[string]any{
 		"Posts": posts,
 	}
 
@@ -110,7 +111,7 @@ func (r *Renderer) RenderDocuments() error {
 		return err
 	}
 
-	data := map[string]interface{}{
+	data := map[string]any{
 		"Documents": documents,
 	}
 
@@ -127,8 +128,8 @@ func (r *Renderer) RenderPost(post *fetcher.Post) error {
 	// Convert markdown content to HTML
 	htmlContent := r.markdownToHTML(post.Content)
 
-	data := map[string]interface{}{
-		"Post": post,
+	data := map[string]any{
+		"Post":        post,
 		"HTMLContent": htmlContent,
 	}
 
@@ -147,7 +148,25 @@ func (r *Renderer) RenderPost(post *fetcher.Post) error {
 }
 
 func (r *Renderer) markdownToHTML(md string) template.HTML {
-	extensions := parser.CommonExtensions | parser.AutoHeadingIDs
+	extensions :=
+		parser.Tables |
+			parser.FencedCode |
+			parser.Autolink |
+			parser.Strikethrough |
+			parser.LaxHTMLBlocks |
+			parser.NonBlockingSpace |
+			parser.Footnotes |
+			parser.HeadingIDs |
+			parser.Titleblock |
+			parser.AutoHeadingIDs |
+			parser.BackslashLineBreak |
+			parser.DefinitionLists |
+			parser.MathJax |
+			parser.OrderedListStart |
+			parser.Attributes |
+			parser.SuperSubscript |
+			parser.EmptyLinesBreakList
+
 	p := parser.NewWithExtensions(extensions)
 
 	htmlFlags := html.CommonFlags | html.HrefTargetBlank
@@ -168,10 +187,10 @@ func (r *Renderer) RenderDocument(doc *fetcher.Post) error {
 		return fmt.Errorf("failed to fetch documents for sidebar: %w", err)
 	}
 
-	data := map[string]interface{}{
-		"Post":      doc,
+	data := map[string]any{
+		"Post":        doc,
 		"HTMLContent": htmlContent,
-		"Documents": documents,
+		"Documents":   documents,
 	}
 
 	var buf bytes.Buffer
