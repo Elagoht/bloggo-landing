@@ -132,7 +132,7 @@ func (r *Renderer) RenderDocuments() error {
 	return os.WriteFile(outputPath, buf.Bytes(), 0644)
 }
 
-{{ ... }}
+func (r *Renderer) RenderPost(post *fetcher.Post) error {
 	// Convert markdown content to HTML
 	htmlContent := r.markdownToHTML(post.Content)
 
