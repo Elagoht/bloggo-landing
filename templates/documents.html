@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/static/style.css" />
 </head>
 
-<body>
+<body class="docs-page">
   {{template "header" .}}
 
   <main>
@@ -17,23 +17,18 @@
       {{template "sidebar" .}}
 
       <div class="main-content">
-        <h1>Documentation</h1>
-
-        <section id="docs-welcome" class="docs-welcome">
-          <div class="docs-hero">
-            <h2>Welcome to Docs</h2>
-            <p>
-              Everything you need to get started with Bloggo: quick start, concepts, and step-by-step tutorials.
-            </p>
-            <nav class="docs-actions">
-              {{if gt (len .Documents) 0}}
-              {{with index .Documents 0}}
-              <a class="cta" href="/documents/{{.Slug}}">Start now</a>
-              {{end}}
-              {{end}}
-            </nav>
-          </div>
-        </section>
+        {{if .Post}}
+          <article class="post">
+            <h1>{{.Post.Title}}</h1>
+            <div class="post-content">{{.HTMLContent}}</div>
+          </article>
+        {{else}}
+          <article class="post">
+            <div class="post-content">
+              <p>No documents available yet.</p>
+            </div>
+          </article>
+        {{end}}
       </div>
     </div>
   </main>

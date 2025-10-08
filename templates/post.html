@@ -7,7 +7,7 @@
     <title>{{.Post.Title}} - Bloggo</title>
     <link rel="stylesheet" href="/static/style.css" />
   </head>
-  <body>
+  <body class="docs-page">
     {{template "header" .}}
 
     <main>
@@ -17,14 +17,10 @@
         <div class="main-content">
           <article class="post">
             <h1>{{.Post.Title}}</h1>
-            <p class="post-meta">
-              By {{.Post.Author.Name}} on {{.Post.PublishedAt.Format "January 2, 2006"}}
-            </p>
-
+        
             <div class="post-content">{{.HTMLContent}}</div>
           </article>
 
-          <a href="/documents" class="back-link">&larr; Go Back</a>
         </div>
       </div>
     </main>

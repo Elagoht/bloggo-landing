@@ -100,7 +100,6 @@ func (r *Renderer) RenderBlogIndex() error {
 	if err := os.MkdirAll(blogDir, 0755); err != nil {
 		return err
 	}
-
 	outputPath := filepath.Join(blogDir, "index.html")
 	return os.WriteFile(outputPath, buf.Bytes(), 0644)
 }
@@ -115,6 +114,15 @@ func (r *Renderer) RenderDocuments() error {
 		"Documents": documents,
 	}
 
+	// If we have at least one document, fetch its full content and include it
+	if len(documents) > 0 {
+		first := documents[0]
+		if post, err := r.fetcher.GetPostBySlug(first.Slug); err == nil && post != nil {
+			data["Post"] = post
+			data["HTMLContent"] = r.markdownToHTML(post.Content)
+		}
+	}
+
 	var buf bytes.Buffer
 	if err := r.templates.ExecuteTemplate(&buf, "documents.html", data); err != nil {
 		return err
@@ -124,7 +132,7 @@ func (r *Renderer) RenderDocuments() error {
 	return os.WriteFile(outputPath, buf.Bytes(), 0644)
 }
 
-func (r *Renderer) RenderPost(post *fetcher.Post) error {
+{{ ... }}
 	// Convert markdown content to HTML
 	htmlContent := r.markdownToHTML(post.Content)
 

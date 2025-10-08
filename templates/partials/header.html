@@ -17,7 +17,7 @@
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector("header");
-    const scrollThreshold = 100;
+    const scrollThreshold = 64;
     const handleScroll = () => {
       const currentScroll = window.scrollY;
       if (currentScroll > scrollThreshold) header.classList.add("scrolled");
