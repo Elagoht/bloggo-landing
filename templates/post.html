@@ -4,26 +4,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{.Post.Title}} - Bloggo</title>
+    <title>Documents - Bloggo</title>
     <link rel="stylesheet" href="/static/style.css" />
   </head>
-  <body class="docs-page">
+
+  <body>
     {{template "header" .}}
 
-    <main>
-      <div class="content-wrapper">
-        {{template "sidebar" .}}
+    <div>
+      {{template "sidebar" .}}
 
-        <div class="main-content">
-          <article class="post">
-            <h1>{{.Post.Title}}</h1>
-        
-            <div class="post-content">{{.HTMLContent}}</div>
-          </article>
+      <main>
+        <article>
+          <h1>{{.Post.Title}}</h1>
 
-        </div>
-      </div>
-    </main>
+          {{.HTMLContent}}
+        </article>
+      </main>
+    </div>
 
     {{template "footer" .}}
   </body>

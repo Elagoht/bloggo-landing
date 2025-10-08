@@ -124,11 +124,11 @@ func (r *Renderer) RenderDocuments() error {
 	}
 
 	var buf bytes.Buffer
-	if err := r.templates.ExecuteTemplate(&buf, "documents.html", data); err != nil {
+	if err := r.templates.ExecuteTemplate(&buf, "post.html", data); err != nil {
 		return err
 	}
 
-	outputPath := filepath.Join(r.outputDir, "documents.html")
+	outputPath := filepath.Join(r.outputDir, "post.html")
 	return os.WriteFile(outputPath, buf.Bytes(), 0644)
 }
 
