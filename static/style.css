@@ -4,11 +4,9 @@
   --max-width: 80rem;
   --accent-blue: #007bff;
   --accent-cyan: #00d9f6;
-  --accent-gradient: linear-gradient(
-    90deg,
-    var(--accent-cyan),
-    var(--accent-blue)
-  );
+  --accent-gradient: linear-gradient(90deg,
+      var(--accent-cyan),
+      var(--accent-blue));
   --accent-hover: #0056b3;
   --bg-primary: #f8f9fa;
   --bg-secondary: #e9ecef;
@@ -19,7 +17,7 @@
   --text-negative: #dc3545;
   --border-color: #dee2e6;
   --green-base: #28a745;
-  --header-bg: rgba(248, 249, 250, 0.95);
+  --header-bg: rgba(248, 249, 250, 0.8);
   --shadow: rgba(0, 0, 0, 0.1);
   --light-glow: linear-gradient(45deg, #3b82f610, #60a5fa00);
   --dark-glow: linear-gradient(45deg, #2563eb40, #3b82f600);
@@ -38,7 +36,7 @@
     --green-light: #6ee7b7;
     --accent-primary: #58a6ff;
     --accent-hover: #007bff;
-    --header-bg: rgba(13, 17, 23, 0.95);
+    --header-bg: rgba(13, 17, 23, 0.8);
     --shadow: rgba(0, 0, 0, 0.7);
   }
 }
@@ -84,13 +82,15 @@ body {
     width: 40rem;
     height: 40rem;
     border-radius: 50%;
-    background: radial-gradient(
-      circle at center,
-      rgba(0, 123, 255, 0.28),
-      rgba(0, 123, 255, 0.12) 40%,
-      rgba(0, 123, 255, 0) 70%
-    );
+    background: radial-gradient(circle at center,
+        rgba(0, 123, 255, 0.28),
+        rgba(0, 123, 255, 0.12) 40%,
+        rgba(0, 123, 255, 0) 70%);
     filter: blur(2.5rem);
+
+    @media (max-width: 48rem) {
+      display: none;
+    }
   }
 
   &::before {
@@ -101,19 +101,16 @@ body {
   &::after {
     bottom: -12rem;
     right: -10rem;
-
-    @media (max-width: 48rem) {
-      display: none;
-    }
   }
 
-  & > div {
+  &>div {
     max-width: 80rem;
     margin: 0rem auto;
     padding: 2rem 0.5rem;
     display: flex;
     align-items: self-start;
     gap: 2rem;
+
     @media (max-width: 48rem) {
       flex-direction: column-reverse;
     }
@@ -125,7 +122,7 @@ main {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 1rem;
-  min-width: 0; 
+  min-width: 0;
 }
 
 header {
@@ -138,8 +135,6 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: transparent;
-  box-shadow: none;
   backdrop-filter: blur(0);
   transition: background-color 0.3s ease, box-shadow 0.3s ease,
     backdrop-filter 0.3s ease;
@@ -152,7 +147,7 @@ header {
     justify-content: space-between;
     align-items: center;
 
-    & > a {
+    &>a {
       display: flex;
       align-items: center;
       gap: 1rem;
@@ -212,8 +207,7 @@ header {
 
   &.scrolled {
     background-color: var(--header-bg);
-    box-shadow: 0 0.25rem 1rem var(--shadow);
-    backdrop-filter: blur(1.5rem);
+    backdrop-filter: blur(.25rem);
   }
 }
 
@@ -301,7 +295,7 @@ section {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 5rem 1rem 1rem;
+  padding-top: 5rem;
 
   @media (min-width: 40rem) {
     padding-top: calc(33dvh - 12rem);
@@ -309,35 +303,13 @@ section {
 
   h1 {
     font-size: clamp(3rem, 7vw, 5rem);
-    background: linear-gradient(
-      to right,
-      var(--accent-blue) 30%,
-      var(--text-primary) 70%
-    );
+    background: linear-gradient(to right,
+        var(--accent-blue) 30%,
+        var(--text-primary) 70%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 900;
-
-    strong {
-      position: relative;
-
-      &::after {
-        content: "";
-        display: block;
-        background: linear-gradient(
-          to right,
-          var(--text-accent) 30%,
-          var(--text-primary) 70%
-        );
-        height: 0.33rem;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        rotate: -2deg;
-        border-radius: 10rem;
-        position: absolute;
-      }
-    }
+    display: inline-block;
   }
 
   ul {
@@ -364,11 +336,9 @@ section {
 
       &:hover {
         transform: translateY(-0.25rem) scale(1.05);
-        background-color: color-mix(
-          in srgb,
-          var(--bg-card) 90%,
-          var(--accent-blue) 10%
-        );
+        background-color: color-mix(in srgb,
+            var(--bg-card) 90%,
+            var(--accent-blue) 10%);
         color: var(--accent-blue);
       }
 
@@ -415,7 +385,7 @@ section {
     margin-top: 0.5rem;
     color: var(--text-secondary);
 
-    > span {
+    >span {
       text-transform: uppercase;
       font-weight: 800;
       letter-spacing: 0.06em;
@@ -549,7 +519,10 @@ section {
       flex: 4;
       border-radius: 100%;
       background-image: var(--dark-glow);
-      animation: lightPulse 4s ease-in-out infinite alternate-reverse;
+
+      @media (min-width:40rem) {
+        animation: lightPulse 4s ease-in-out infinite alternate-reverse;
+      }
 
       &:first-child {
         rotate: 20deg;
@@ -569,7 +542,9 @@ section {
       animation-delay: -1s;
       background-image: var(--light-glow);
       rotate: -10deg;
-      animation: lightPulse 4s ease-in-out infinite alternate-reverse;
+      @media (min-width:40rem) {
+        animation: lightPulse 4s ease-in-out infinite alternate-reverse;
+      }
 
       @media (prefers-color-scheme: dark) {
         background-image: var(--dark-glow);
@@ -584,6 +559,7 @@ section {
 }
 
 @keyframes lightPulse {
+
   0%,
   100% {
     transform: scaleY(1);
@@ -783,19 +759,15 @@ section {
       }
 
       @media (prefers-color-scheme: light) {
-        background: linear-gradient(
-          135deg,
-          var(--bg-card),
-          color-mix(in srgb, var(--accent-blue) 15%, var(--bg-card))
-        );
+        background: linear-gradient(135deg,
+            var(--bg-card),
+            color-mix(in srgb, var(--accent-blue) 15%, var(--bg-card)));
       }
 
       @media (prefers-color-scheme: dark) {
-        background: linear-gradient(
-          315deg,
-          var(--bg-secondary),
-          color-mix(in srgb, var(--accent-blue) 15%, var(--bg-secondary))
-        );
+        background: linear-gradient(315deg,
+            var(--bg-secondary),
+            color-mix(in srgb, var(--accent-blue) 15%, var(--bg-secondary)));
 
         &::before {
           background: var(--dark-glow);
@@ -1299,35 +1271,27 @@ section {
       }
 
       &:nth-child(odd) {
-        background: linear-gradient(
-          135deg,
-          color-mix(in srgb, var(--accent-blue) 6%, var(--bg-card)),
-          var(--bg-card)
-        );
+        background: linear-gradient(135deg,
+            color-mix(in srgb, var(--accent-blue) 6%, var(--bg-card)),
+            var(--bg-card));
       }
 
       &:nth-child(even) {
-        background: linear-gradient(
-          135deg,
-          color-mix(in srgb, var(--accent-cyan) 6%, var(--bg-card)),
-          var(--bg-card)
-        );
+        background: linear-gradient(135deg,
+            color-mix(in srgb, var(--accent-cyan) 6%, var(--bg-card)),
+            var(--bg-card));
       }
 
       @media (prefers-color-scheme: dark) {
         color: var(--text-primary);
-        background: linear-gradient(
-          135deg,
-          color-mix(in srgb, var(--accent-blue) 12%, var(--bg-secondary)),
-          var(--bg-secondary)
-        );
+        background: linear-gradient(135deg,
+            color-mix(in srgb, var(--accent-blue) 12%, var(--bg-secondary)),
+            var(--bg-secondary));
 
         &:nth-child(even) {
-          background: linear-gradient(
-            135deg,
-            color-mix(in srgb, var(--accent-cyan) 12%, var(--bg-secondary)),
-            var(--bg-secondary)
-          );
+          background: linear-gradient(135deg,
+              color-mix(in srgb, var(--accent-cyan) 12%, var(--bg-secondary)),
+              var(--bg-secondary));
         }
 
         &::before {
@@ -1345,7 +1309,7 @@ section {
     }
   }
 
-  & > img {
+  &>img {
     width: 100%;
     max-width: 10rem;
     height: auto;
@@ -1356,11 +1320,11 @@ section {
     order: 2;
   }
 
-  & > h2 {
+  &>h2 {
     order: 1;
   }
 
-  & > #feature-wheel {
+  &>#feature-wheel {
     order: 3;
     margin-top: 0;
   }
@@ -1382,7 +1346,7 @@ section {
       order: unset;
     }
 
-    & > img {
+    &>img {
       grid-column: 2 / span 1;
       justify-self: center;
       align-self: center;
@@ -1466,16 +1430,20 @@ article {
     font-weight: 600;
     letter-spacing: -0.02em;
   }
+
   h1 {
     font-size: 2.25rem;
     margin-top: 0;
   }
+
   h2 {
     font-size: 1.6rem;
   }
+
   h3 {
     font-size: 1.25rem;
   }
+
   h4 {
     font-size: 1.05rem;
     font-weight: 600;
@@ -1496,6 +1464,7 @@ article {
     text-decoration-thickness: 0.0625rem;
     text-underline-offset: 0.25rem;
   }
+
   a:hover,
   a:focus {
     text-decoration-thickness: 0.125rem;
@@ -1507,7 +1476,8 @@ article {
     margin: 0 0 1rem 1.25rem;
     padding: 0;
   }
-  li + li {
+
+  li+li {
     margin-top: 0.35rem;
   }
 
@@ -1554,9 +1524,11 @@ article {
     border-radius: 0.5rem;
     object-fit: cover;
   }
+
   figure {
     margin: 0 0 1rem;
   }
+
   figcaption {
     font-size: 0.8rem;
     color: #5b6b7a;
@@ -1569,12 +1541,14 @@ article {
     border-collapse: collapse;
     margin: 1rem 0;
   }
+
   th,
   td {
     padding: 0.6rem 0.75rem;
     border: 0.0625rem solid rgba(15, 23, 36, 0.06);
     text-align: left;
   }
+
   thead th {
     background: rgba(11, 102, 255, 0.06);
     font-weight: 600;
@@ -1583,18 +1557,17 @@ article {
   hr {
     border: 0;
     height: 0.0625rem;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(15, 23, 36, 0.08),
-      transparent
-    );
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(15, 23, 36, 0.08),
+        transparent);
     margin: 1.6rem 0;
   }
 
   strong {
     font-weight: 700;
   }
+
   em {
     font-style: italic;
   }
@@ -1602,6 +1575,7 @@ article {
   details {
     margin: 0.6rem 0;
   }
+
   summary {
     cursor: pointer;
     list-style: none;
